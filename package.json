@@ -1,0 +1,38 @@
+{
+  "name": "@github/check-all",
+  "description": "Multiple checkbox selection helper.",
+  "version": "0.0.1",
+  "main": "dist/check-all.umd.js",
+  "module": "dist/check-all.esm.js",
+  "license": "MIT",
+  "repository": "github/check-all",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "clean": "rm -rf dist",
+    "lint": "eslint check-all.js test/ && flow check",
+    "prebuild": "npm run clean && npm run lint && mkdir dist",
+    "build-umd": "BABEL_ENV=umd babel check-all.js -o dist/check-all.umd.js && cp check-all.js.flow dist/check-all.umd.js.flow",
+    "build-esm": "BABEL_ENV=esm babel check-all.js -o dist/check-all.esm.js && cp check-all.js.flow dist/check-all.esm.js.flow",
+    "build": "npm run build-umd && npm run build-esm",
+    "pretest": "",
+    "test": "karma start test/karma.config.js",
+    "prepublishOnly": "npm run build"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-es2015-rollup": "^3.0.0",
+    "babel-preset-flow": "^6.23.0",
+    "chai": "^4.1.2",
+    "eslint": "^5.1.0",
+    "eslint-plugin-github": "^1.1.3",
+    "flow-bin": "^0.76.0",
+    "karma": "^2.0.0",
+    "karma-chai": "^0.1.0",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-mocha": "^1.3.0",
+    "karma-mocha-reporter": "^2.2.5",
+    "mocha": "^5.0.5"
+  }
+}

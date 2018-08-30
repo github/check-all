@@ -1,0 +1,11 @@
+/* @flow strict */
+
+interface Subscription {
+  unsubscribe: () => void
+}
+
+declare module.exports: {
+  install(container: Element): void;
+  uninstall(container: Element): void;
+  subscribe(container: Element): Subscription;
+}
