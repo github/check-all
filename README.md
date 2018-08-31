@@ -15,8 +15,17 @@ $ npm install @github/check-all
 ### JS
 
 ```js
-import {install} from '@github/check-all'
-install(document.querySelector('[data-check-all-container]'))
+import checkAll from '@github/check-all'
+checkAll(document.querySelector('[data-check-all-container]'))
+```
+
+Using a library like [selector-observer](https://github.com/josh/selector-observer), the behavior can automatically be applied to any container matching a selector.
+
+```js
+import {observe} from 'selector-observer'
+import checkAll from '@github/check-all'
+
+observe('[data-check-all-container]', { subscribe: checkAll })
 ```
 
 ### HTML
