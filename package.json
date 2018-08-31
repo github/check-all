@@ -1,7 +1,7 @@
 {
   "name": "@github/check-all",
   "description": "Multiple checkbox selection helper.",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "main": "dist/check-all.umd.js",
   "module": "dist/check-all.esm.js",
   "license": "MIT",
