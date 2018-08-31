@@ -13,7 +13,7 @@ describe('check-all', function() {
         <label><input type="checkbox" data-check-all-item> github/quote-selection</label>
       </div>
     `
-    subscription = checkAll.subscribe(document.querySelector('[data-check-all-container]'))
+    subscription = checkAll.default(document.querySelector('[data-check-all-container]'))
   })
 
   afterEach(function() {
