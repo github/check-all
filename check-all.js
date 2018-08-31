@@ -47,21 +47,17 @@ export default function subscribe(container: Element): Subscription {
     }
     const target = event.target
     if (!(target instanceof HTMLInputElement)) return
-    const container = event.currentTarget
-    if (!(container instanceof HTMLElement)) return
     lastCheckbox = null
 
     for (const input of container.querySelectorAll('[data-check-all-item]')) {
       setChecked(target, input, target.checked, false)
     }
-    updateCount(container)
+    updateCount()
   }
 
   function onMouseDown(event: MouseEvent): void {
     if (!(event.target instanceof Element)) return
     if (event.target.hasAttribute('data-check-all-item')) {
-      const container = event.currentTarget
-      if (!(container instanceof HTMLElement)) return
       shiftKey = event.shiftKey
     }
   }
@@ -75,8 +71,6 @@ export default function subscribe(container: Element): Subscription {
     }
     const target = event.target
     if (!(target instanceof HTMLInputElement)) return
-    const container = event.currentTarget
-    if (!(container instanceof HTMLElement)) return
 
     const allCheckbox = container.querySelector('[data-check-all]')
     if (!allCheckbox) return
@@ -96,10 +90,10 @@ export default function subscribe(container: Element): Subscription {
     const checked = count === total
     const indeterminate = total > count && count > 0
     setChecked(target, allCheckbox, checked, indeterminate)
-    updateCount(container)
+    updateCount()
   }
 
-  function updateCount(container) {
+  function updateCount() {
     // Update count of optional `[data-check-all-count]` element.
     const countContainer = container.querySelector('[data-check-all-count]')
     if (countContainer) {
