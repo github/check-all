@@ -13,9 +13,15 @@
     <label><input type="checkbox" data-check-all-item> github/eventlistener-polyfill</label>
     <label><input type="checkbox" data-check-all-item> github/quote-selection</label>
   </div>
-  <script type="module">
+  <!-- GitHub Pages demo -->
+  <script type="text/javascript" src="https://unpkg.com/@github/check-all@latest"></script>
+  <script type="text/javascript">
+    checkAll.install(document.querySelector('[data-check-all-container]'))
+  </script>
+  <!-- Uncomment to test in development -->
+  <!--<script type="module">
     import {install} from '../dist/check-all.esm.js'
     install(document.querySelector('[data-check-all-container]'))
-  </script>
+  </script>-->
 </body>
 </html>
