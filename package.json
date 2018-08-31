@@ -16,7 +16,7 @@
     "build-umd": "BABEL_ENV=umd babel check-all.js -o dist/check-all.umd.js && cp check-all.js.flow dist/check-all.umd.js.flow",
     "build-esm": "BABEL_ENV=esm babel check-all.js -o dist/check-all.esm.js && cp check-all.js.flow dist/check-all.esm.js.flow",
     "build": "npm run build-umd && npm run build-esm",
-    "pretest": "",
+    "pretest": "npm run build",
     "test": "karma start test/karma.config.js",
     "prepublishOnly": "npm run build"
   },
