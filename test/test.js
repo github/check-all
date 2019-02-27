@@ -1,5 +1,3 @@
-/* global checkAll */
-
 describe('check-all', function() {
   let subscription
   beforeEach(function() {
