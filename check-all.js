@@ -39,7 +39,7 @@ export default function subscribe(container: Element): Subscription {
   }
 
   function onCheckAll(event: Event): void {
-    if (event instanceof CustomEvent) {
+    if (event instanceof CustomEvent && event.detail) {
       const {relatedTarget} = event.detail
       if (relatedTarget && relatedTarget.hasAttribute('data-check-all-item')) {
         return
