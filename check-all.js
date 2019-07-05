@@ -10,7 +10,7 @@ export default function subscribe(container: Element): Subscription {
   container.addEventListener('mousedown', onMouseDown)
   container.addEventListener('change', onChange)
 
-  function setChecked(target: Element, input: HTMLElement, checked: boolean, indeterminate: boolean): void {
+  function setChecked(target: Element, input: HTMLElement, checked: boolean, indeterminate: boolean = false): void {
     if (!(input instanceof HTMLInputElement)) return
 
     input.indeterminate = indeterminate
@@ -50,7 +50,7 @@ export default function subscribe(container: Element): Subscription {
     lastCheckbox = null
 
     for (const input of container.querySelectorAll('[data-check-all-item]')) {
-      setChecked(target, input, target.checked, false)
+      setChecked(target, input, target.checked)
     }
     updateCount()
   }
@@ -75,24 +75,25 @@ export default function subscribe(container: Element): Subscription {
     const target = event.target
     if (!(target instanceof HTMLInputElement)) return
 
-    const allCheckbox = container.querySelector('[data-check-all]')
-    if (!allCheckbox) return
     const itemCheckboxes = Array.from(container.querySelectorAll('[data-check-all-item]'))
     if (shiftKey && lastCheckbox) {
       const [start, end] = [itemCheckboxes.indexOf(lastCheckbox), itemCheckboxes.indexOf(target)].sort()
       for (const input of itemCheckboxes.slice(start, +end + 1 || 9e9)) {
-        setChecked(target, input, target.checked, false)
+        setChecked(target, input, target.checked)
       }
     }
 
     shiftKey = false
     lastCheckbox = target
 
-    const total = itemCheckboxes.length
-    const count = itemCheckboxes.filter(checkbox => checkbox instanceof HTMLInputElement && checkbox.checked).length
-    const checked = count === total
-    const indeterminate = total > count && count > 0
-    setChecked(target, allCheckbox, checked, indeterminate)
+    const allCheckbox = container.querySelector('[data-check-all]')
+    if (allCheckbox) {
+      const total = itemCheckboxes.length
+      const count = itemCheckboxes.filter(checkbox => checkbox instanceof HTMLInputElement && checkbox.checked).length
+      const checked = count === total
+      const indeterminate = total > count && count > 0
+      setChecked(target, allCheckbox, checked, indeterminate)
+    }
     updateCount()
   }
 
