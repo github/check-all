@@ -4,10 +4,12 @@
   "version": "0.2.4",
   "main": "dist/check-all.umd.js",
   "module": "dist/check-all.esm.js",
+  "types": "index.d.ts",
   "license": "MIT",
   "repository": "github/check-all",
   "files": [
-    "dist"
+    "dist",
+    "index.d.ts"
   ],
   "scripts": {
     "clean": "rm -rf dist",
