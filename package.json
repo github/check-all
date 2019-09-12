@@ -13,7 +13,7 @@
   ],
   "scripts": {
     "clean": "rm -rf dist",
-    "lint": "eslint check-all.js test/ && flow check",
+    "lint": "github-lint",
     "prebuild": "npm run clean && npm run lint && mkdir dist",
     "build-umd": "BABEL_ENV=umd babel check-all.js -o dist/check-all.umd.js && cp check-all.js.flow dist/check-all.umd.js.flow",
     "build-esm": "BABEL_ENV=esm babel check-all.js -o dist/check-all.esm.js && cp check-all.js.flow dist/check-all.esm.js.flow",
@@ -39,5 +39,9 @@
     "karma-mocha": "^1.3.0",
     "karma-mocha-reporter": "^2.2.5",
     "mocha": "^6.1.4"
-  }
+  },
+  "eslintIgnore": [
+    "dist/",
+    "prettier.config.js"
+  ]
 }
