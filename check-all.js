@@ -52,6 +52,8 @@ export default function subscribe(container: Element): Subscription {
     for (const input of container.querySelectorAll('[data-check-all-item]')) {
       setChecked(target, input, target.checked)
     }
+
+    target.indeterminate = false
     updateCount()
   }
 
