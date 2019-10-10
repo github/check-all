@@ -22,12 +22,19 @@ describe('check-all', function() {
   it('checks all', function() {
     const checkAll = document.querySelector('[data-check-all]')
     const count = document.querySelector('[data-check-all-count]')
+    const firstItem = document.querySelector('[data-check-all-item]')
     checkAll.click()
     assert.equal(count.textContent, '4')
     assert.equal(document.querySelectorAll('[data-check-all-item]:checked').length, 4)
     checkAll.click()
     assert.equal(count.textContent, '0')
     assert.equal(document.querySelectorAll('[data-check-all-item]:checked').length, 0)
+    assert.notOk(checkAll.indeterminate)
+    firstItem.click()
+    assert.ok(checkAll.indeterminate)
+    assert.notOk(checkAll.checked)
+    checkAll.checked = false
+    checkAll.dispatchEvent(new Event('change', {bubbles: true}))
     assert.notOk(checkAll.indeterminate)
   })
 
