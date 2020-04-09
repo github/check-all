@@ -1,6 +1,6 @@
-describe('check-all', function() {
+describe('check-all', function () {
   let subscription
-  beforeEach(function() {
+  beforeEach(function () {
     document.body.innerHTML = `
       <div data-check-all-container>
         Count: <span data-check-all-count>0</span>
@@ -14,12 +14,12 @@ describe('check-all', function() {
     subscription = checkAll.default(document.querySelector('[data-check-all-container]'))
   })
 
-  afterEach(function() {
+  afterEach(function () {
     subscription.unsubscribe()
     document.body.innerHTML = ''
   })
 
-  it('checks all', function() {
+  it('checks all', function () {
     const checkAll = document.querySelector('[data-check-all]')
     const count = document.querySelector('[data-check-all-count]')
     const firstItem = document.querySelector('[data-check-all-item]')
@@ -38,7 +38,7 @@ describe('check-all', function() {
     assert.notOk(checkAll.indeterminate)
   })
 
-  it('checks range', function() {
+  it('checks range', function () {
     const checkAll = document.querySelector('[data-check-all]')
     const count = document.querySelector('[data-check-all-count]')
     const checkboxes = document.querySelectorAll('[data-check-all-item]')
