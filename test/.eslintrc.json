@@ -3,8 +3,7 @@
     "mocha": true
   },
   "globals": {
-    "assert": true,
-    "checkAll": false
+    "assert": true
   },
   "extends": "../.eslintrc.json"
 }
