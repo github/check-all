@@ -1,16 +1,15 @@
-/* @flow */
-type Subscription = {|
+type Subscription = {
   unsubscribe: () => void
-|}
+}
 
-export default function subscribe(container: Element): Subscription {
+export default function subscribe(container: HTMLElement): Subscription {
   let shiftKey = false
-  let lastCheckbox = null
+  let lastCheckbox: HTMLInputElement | null = null
 
   container.addEventListener('mousedown', onMouseDown)
   container.addEventListener('change', onChange)
 
-  function setChecked(target: Element, input: HTMLElement, checked: boolean, indeterminate: boolean = false): void {
+  function setChecked(target: Element, input: HTMLElement, checked: boolean, indeterminate = false): void {
     if (!(input instanceof HTMLInputElement)) return
 
     input.indeterminate = indeterminate
@@ -49,7 +48,7 @@ export default function subscribe(container: Element): Subscription {
     if (!(target instanceof HTMLInputElement)) return
     lastCheckbox = null
 
-    for (const input of container.querySelectorAll('[data-check-all-item]')) {
+    for (const input of container.querySelectorAll<HTMLElement>('[data-check-all-item]')) {
       setChecked(target, input, target.checked)
     }
 
@@ -77,7 +76,7 @@ export default function subscribe(container: Element): Subscription {
     const target = event.target
     if (!(target instanceof HTMLInputElement)) return
 
-    const itemCheckboxes = Array.from(container.querySelectorAll('[data-check-all-item]'))
+    const itemCheckboxes = Array.from(container.querySelectorAll<HTMLElement>('[data-check-all-item]'))
     if (shiftKey && lastCheckbox) {
       const [start, end] = [itemCheckboxes.indexOf(lastCheckbox), itemCheckboxes.indexOf(target)].sort()
       for (const input of itemCheckboxes.slice(start, +end + 1 || 9e9)) {
@@ -88,7 +87,7 @@ export default function subscribe(container: Element): Subscription {
     shiftKey = false
     lastCheckbox = target
 
-    const allCheckbox = container.querySelector('[data-check-all]')
+    const allCheckbox = container.querySelector<HTMLElement>('[data-check-all]')
     if (allCheckbox) {
       const total = itemCheckboxes.length
       const count = itemCheckboxes.filter(checkbox => checkbox instanceof HTMLInputElement && checkbox.checked).length

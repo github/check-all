@@ -1,3 +1,5 @@
+import subscribe from '../dist/index.js'
+
 describe('check-all', function () {
   let subscription
   beforeEach(function () {
@@ -11,7 +13,7 @@ describe('check-all', function () {
         <label><input type="checkbox" data-check-all-item> github/quote-selection</label>
       </div>
     `
-    subscription = checkAll.default(document.querySelector('[data-check-all-container]'))
+    subscription = subscribe(document.querySelector('[data-check-all-container]'))
   })
 
   afterEach(function () {
