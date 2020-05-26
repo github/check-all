@@ -16,7 +16,7 @@
     "lint": "eslint . --ext .js,.ts && tsc --noEmit",
     "prebuild": "npm run clean && npm run lint && mkdir dist",
     "build": "tsc",
-    "prsetest": "npm run build",
+    "pretest": "npm run build",
     "test": "karma start karma.config.cjs",
     "prepublishOnly": "npm run build",
     "postpublish": "npm publish --ignore-scripts --@github:registry='https://npm.pkg.github.com'"
