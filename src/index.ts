@@ -58,7 +58,8 @@ export default function subscribe(container: HTMLElement): Subscription {
 
   function onMouseDown(event: MouseEvent): void {
     if (!(event.target instanceof Element)) return
-    if (event.target.hasAttribute('data-check-all-item')) {
+    const target = event.target instanceof HTMLLabelElement ? event.target.control || event.target : event.target
+    if (target.hasAttribute('data-check-all-item')) {
       shiftKey = event.shiftKey
     }
   }
