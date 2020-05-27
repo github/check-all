@@ -1,13 +1,9 @@
 {
-  "rules": {
-    "flowtype/require-valid-file-annotation": "off"
-  },
   "env": {
     "mocha": true
   },
   "globals": {
-    "assert": true,
-    "checkAll": false
+    "assert": true
   },
   "extends": "../.eslintrc.json"
 }

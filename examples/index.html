@@ -13,15 +13,10 @@
     <label><input type="checkbox" data-check-all-item> github/eventlistener-polyfill</label>
     <label><input type="checkbox" data-check-all-item> github/quote-selection</label>
   </div>
-  <!-- GitHub Pages demo -->
-  <script type="text/javascript" src="https://unpkg.com/@github/check-all@latest"></script>
-  <script type="text/javascript">
-    checkAll.default(document.querySelector('[data-check-all-container]'))
-  </script>
-  <!-- Uncomment to test in development -->
-  <!--<script type="module">
-    import checkAll from '../dist/check-all.js'
+  <script type="module">
+    // import checkAll from '../dist/index.js'
+    import checkAll from 'https://unpkg.com/@github/check-all@latest?module'
     checkAll(document.querySelector('[data-check-all-container]'))
-  </script>-->
+  </script>
 </body>
 </html>
