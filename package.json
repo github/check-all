@@ -1,7 +1,7 @@
 {
   "name": "@github/check-all",
   "description": "Multiple checkbox selection helper.",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "type": "module",
