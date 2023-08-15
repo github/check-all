@@ -5,14 +5,17 @@
   <title>check-all demo</title>
 </head>
 <body>
-  <div data-check-all-container style="user-select: none; -webkit-user-select: none;">
-    Count: <span data-check-all-count>0</span>
-    <label><input type="checkbox" data-check-all> Check All</label>
-    <label><input type="checkbox" data-check-all-item> github/fetch</label>
-    <label><input type="checkbox" data-check-all-item> github/textarea-autosize</label>
-    <label><input type="checkbox" data-check-all-item> github/eventlistener-polyfill</label>
-    <label><input type="checkbox" data-check-all-item> github/quote-selection</label>
-  </div>
+  <main aria-labelledby="h">
+    <h1 id="h">Check-All Example</h1>
+    <div data-check-all-container style="user-select: none; -webkit-user-select: none;">
+      Count: <span data-check-all-count>0</span>
+      <label><input type="checkbox" data-check-all> Check All</label>
+      <label><input type="checkbox" data-check-all-item> github/fetch</label>
+      <label><input type="checkbox" data-check-all-item> github/textarea-autosize</label>
+      <label><input type="checkbox" data-check-all-item> github/eventlistener-polyfill</label>
+      <label><input type="checkbox" data-check-all-item> github/quote-selection</label>
+    </div>
+  </main>
   <script type="module">
     // import checkAll from '../dist/index.js'
     import checkAll from 'https://unpkg.com/@github/check-all@latest?module'
