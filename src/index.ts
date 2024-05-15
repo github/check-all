@@ -10,7 +10,7 @@ export default function subscribe(container: HTMLElement): Subscription {
   container.addEventListener('change', onChange)
 
   function setChecked(target: Element, input: HTMLElement, checked: boolean, indeterminate = false): void {
-    if (!(input instanceof HTMLInputElement)) return
+    if (!(input instanceof HTMLInputElement) || input.disabled) return
 
     input.indeterminate = indeterminate
     if (input.checked !== checked) {
