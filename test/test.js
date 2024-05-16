@@ -78,4 +78,17 @@ describe('check-all', function () {
     assert(checkboxes[3].checked)
     assert(checkAll.indeterminate)
   })
+
+  it('checks all without disabled', function () {
+    const checkAll = document.querySelector('[data-check-all]')
+    const count = document.querySelector('[data-check-all-count]')
+    const checkboxes = document.querySelectorAll('[data-check-all-item]')
+    checkboxes[1].disabled = true
+    checkboxes[2].disabled = true
+    checkboxes[3].disabled = true
+    checkAll.click()
+    assert.equal(count.textContent, '1')
+    assert.equal(document.querySelectorAll('[data-check-all-item]:checked').length, 1)
+    assert.notOk(checkAll.indeterminate)
+  })
 })
