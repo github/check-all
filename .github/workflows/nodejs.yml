@@ -14,11 +14,11 @@ jobs:
     - name: Set git to not change EoL
       run: |
         git config --global core.autocrlf false
-    - uses: actions/checkout@v2
-    - name: Use Node.js 12.x
-      uses: actions/setup-node@v1
+    - uses: actions/checkout@v4
+    - name: Use Node.js
+      uses: actions/setup-node@v4
       with:
-        node-version: 12.x
+        node-version: 22.x
     - name: npm install, build, and test
       run: |
         npm install
