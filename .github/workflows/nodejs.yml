@@ -21,6 +21,9 @@ jobs:
       uses: actions/setup-node@v4
       with:
         node-version: 22.x
+    - name: Set up Chrome
+      uses: browser-actions/setup-chrome@v1
+      id: setup-chrome
     - name: npm install, build, and test
       run: |
         npm install
@@ -28,3 +31,4 @@ jobs:
         npm test
       env:
         CI: true
+        CHROME_BIN: ${{ steps.setup-chrome.outputs.chrome-path }}
