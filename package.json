@@ -23,6 +23,7 @@
   },
   "prettier": "@github/prettier-config",
   "devDependencies": {
+    "@eslint/eslintrc": "^3.3.5",
     "@github/prettier-config": "0.0.4",
     "chai": "^4.2.0",
     "eslint": "^10.4.0",
