@@ -13,7 +13,7 @@
   ],
   "scripts": {
     "clean": "rm -rf dist",
-    "lint": "eslint . --ext .js,.ts && tsc --noEmit",
+    "lint": "eslint . --ext .js,.ts --resolve-plugins-relative-to ./node_modules/eslint-plugin-github && tsc --noEmit",
     "prebuild": "npm run clean && npm run lint && mkdir dist",
     "build": "tsc",
     "pretest": "npm run build",
@@ -25,7 +25,7 @@
   "devDependencies": {
     "@github/prettier-config": "0.0.4",
     "chai": "^4.2.0",
-    "eslint": "^10.4.0",
+    "eslint": "^8.57.1",
     "eslint-plugin-github": "^4.0.0",
     "karma": "^6.3.16",
     "karma-chai": "^0.1.0",
