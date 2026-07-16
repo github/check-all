@@ -3,6 +3,7 @@
     "module": "esnext",
     "target": "es2017",
     "strict": true,
+    "skipLibCheck": true,
     "declaration": true,
     "outDir": "dist",
     "removeComments": true
