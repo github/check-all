@@ -1,4 +1,6 @@
 module.exports = function (config) {
+  const browsers = process.env.CI ? ['ChromeHeadlessNoSandbox'] : ['ChromeHeadless']
+
   config.set({
     frameworks: ['mocha', 'chai'],
     files: [
@@ -9,7 +11,13 @@ module.exports = function (config) {
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
-    browsers: ['ChromeHeadless'],
+    customLaunchers: {
+      ChromeHeadlessNoSandbox: {
+        base: 'ChromeHeadless',
+        flags: ['--no-sandbox']
+      }
+    },
+    browsers,
     autoWatch: false,
     singleRun: true,
     concurrency: Infinity
