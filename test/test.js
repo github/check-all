@@ -79,6 +79,30 @@ describe('check-all', function () {
     assert(checkAll.indeterminate)
   })
 
+  for (const [first, last] of [
+    [2, 10],
+    [10, 2]
+  ]) {
+    it(`checks a range across two-digit indexes from ${first} to ${last}`, function () {
+      const container = document.querySelector('[data-check-all-container]')
+      for (let i = 4; i < 12; i++) {
+        const input = document.createElement('input')
+        input.type = 'checkbox'
+        input.setAttribute('data-check-all-item', '')
+        container.append(input)
+      }
+      const checkboxes = container.querySelectorAll('[data-check-all-item]')
+      checkboxes[first].click()
+      checkboxes[last].dispatchEvent(new MouseEvent('mousedown', {shiftKey: true, bubbles: true}))
+      checkboxes[last].click()
+
+      for (let i = 0; i < checkboxes.length; i++) {
+        assert.equal(checkboxes[i].checked, i >= 2 && i <= 10, `checkbox ${i}`)
+      }
+      assert.equal(container.querySelector('[data-check-all-count]').textContent, '9')
+    })
+  }
+
   it('checks all without disabled', function () {
     const checkAll = document.querySelector('[data-check-all]')
     const count = document.querySelector('[data-check-all-count]')
