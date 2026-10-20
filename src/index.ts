@@ -79,7 +79,7 @@ export default function subscribe(container: HTMLElement): Subscription {
 
     const itemCheckboxes = Array.from(container.querySelectorAll<HTMLElement>('[data-check-all-item]'))
     if (shiftKey && lastCheckbox) {
-      const [start, end] = [itemCheckboxes.indexOf(lastCheckbox), itemCheckboxes.indexOf(target)].sort()
+      const [start, end] = [itemCheckboxes.indexOf(lastCheckbox), itemCheckboxes.indexOf(target)].sort((a, b) => a - b)
       for (const input of itemCheckboxes.slice(start, +end + 1 || 9e9)) {
         setChecked(target, input, target.checked)
       }
